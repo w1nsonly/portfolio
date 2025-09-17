@@ -1,9 +1,10 @@
 // File: components/layout/Sidebar.tsx
 
 "use client";
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import Card from "@/components/layout/Card";
-import TabButton from "@/components/layout/TabButton";
+import TabButton from "./TabButton";
 import { SPOTIFY_GREEN, TEXT_MUTED } from "@/theme/constants";
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa6";
 import Image from "next/image";
@@ -23,10 +24,20 @@ interface SidebarProps {
 export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
   const [isOpen, setOpen] = useState(false);
 
+  // Lock background scroll when the sheet is open
+  useEffect(() => {
+    if (!isOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isOpen]);
+
   return (
     <>
-      {/* MOBILE ONLY — sticky and full width */}
-      <aside className="sticky top-0 z-50 col-span-12 w-full md:hidden ">
+      {/* MOBILE TOP BAR — sticky and full width */}
+      <aside className="sticky top-0 z-50 col-span-12 w-full md:hidden">
         <Card className="relative w-full">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
@@ -48,99 +59,122 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
               rounded
             />
           </div>
-
-          {isOpen && (
-            <>
-              {/* click-away overlay */}
-              <button
-                aria-label="Close menu"
-                className="fixed inset-0 z-40 cursor-default md:hidden"
-                onClick={() => setOpen(false)}
-              />
-              {/* fixed dropdown so it never creates horizontal overflow */}
-              <nav
-                className="
-                  fixed right-4 top-[72px] z-50
-                  w-64 max-w-[calc(100vw-1rem)]
-                  rounded-lg border border-zinc-800/70 bg-[#101010] shadow-xl md:hidden
-                "
-              >
-                {/* Tabs */}
-                <div className="p-3 border-b border-zinc-800/70">
-                  <p className={`${TEXT_MUTED} text-xs mb-2`}>Navigate</p>
-                  <div className="space-y-1">
-                    {tabs.map((t) => (
-                      <button
-                        key={t.key}
-                        onClick={() => {
-                          onChange(t.key);
-                          setOpen(false);
-                        }}
-                        className={`w-full text-left rounded-md px-3 py-2 text-sm flex items-center gap-2 hover:bg-white/5 ${
-                          active === t.key ? "bg-white/5" : ""
-                        }`}
-                      >
-                        <t.icon size={16} />
-                        <span>{t.key}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Quick Links */}
-                <div className="p-3 border-b border-zinc-800/70">
-                  <p className={`${TEXT_MUTED} text-xs mb-2`}>Quick links</p>
-                  <div className="flex gap-4 text-2xl">
-                    {socials.map((social) => (
-                      <a
-                        key={social.title}
-                        href={social.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="hover:text-[#1DB954] transition-colors"
-                        aria-label={social.title}
-                      >
-                        {social.icon}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Resume */}
-                <div className="p-3">
-                  <a
-                    href="/resume.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center w-full rounded-full px-5 py-2 font-medium text-black transition"
-                    style={{ backgroundColor: SPOTIFY_GREEN }}
-                    onClick={() => setOpen(false)}
-                  >
-                    Resume
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="ml-2 h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </nav>
-            </>
-          )}
         </Card>
       </aside>
 
-      {/* DESKTOP ONLY */}
-      <aside className="hidden md:block col-span-3 xl:col-span-2 space-y-4 self-start">
+      {/* RIGHT SIDE SHEET + OVERLAY (mobile) */}
+      <div
+        className={`md:hidden fixed inset-0 z-[60] ${
+          isOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+        aria-hidden={!isOpen}
+      >
+        {/* Overlay */}
+        <button
+          aria-label="Close menu"
+          onClick={() => setOpen(false)}
+          className={`absolute inset-0 transition-opacity duration-200 ${
+            isOpen ? "opacity-100" : "opacity-0"
+          } bg-black/30 backdrop-blur-xs`}
+        />
+
+        {/* Sheet panel */}
+        <nav
+          role="dialog"
+          aria-modal="true"
+          className={[
+            "absolute right-0 top-0 h-svh w-[40%] max-w-[14rem]",
+            "border-l border-zinc-800/70 bg-[#101010]/90 shadow-lg",
+            "transition-transform duration-300 will-change-transform",
+            isOpen ? "translate-x-0" : "translate-x-full",
+          ].join(" ")}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 pt-3 pb-2">
+            <span className="text-base font-medium text-zinc-200">
+              Navigate
+            </span>
+            <button
+              aria-label="Close"
+              onClick={() => setOpen(false)}
+              className="p-2 -mr-2 text-zinc-300 hover:text-white text-3xl"
+            >
+              ×
+            </button>
+          </div>
+
+          {/* Tabs */}
+          <div className="px-2">
+            {tabs.map((t) => (
+              <button
+                key={t.key}
+                onClick={() => {
+                  onChange(t.key);
+                  setOpen(false);
+                }}
+                className={`w-full text-left flex items-center gap-3 rounded-lg px-4 py-4 text-lg
+                  hover:bg-white/5 active:bg-white/10 transition
+                  ${active === t.key ? "bg-white/5" : ""}`}
+              >
+                <t.icon size={20} className="shrink-0" />
+                <span className="leading-none">{t.key}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="my-3 mx-2 border-t border-zinc-800/70" />
+
+          {/* Quick links */}
+          <div className="px-4">
+            <p className={`${TEXT_MUTED} text-xs mb-2`}>Quick links</p>
+            <div className="flex gap-4 text-2xl">
+              {socials.map((s) => (
+                <a
+                  key={s.title}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={s.title}
+                  className="hover:text-[#1DB954] transition-colors"
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Resume docked at bottom */}
+          <div className="absolute left-0 right-0 bottom-0 p-4 pb-[max(env(safe-area-inset-bottom),1rem)]">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center justify-center w-full rounded-full px-5 py-3 text-base font-semibold text-black"
+              style={{ backgroundColor: SPOTIFY_GREEN }}
+            >
+              Resume
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="ml-2 h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"
+                />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+
+      {/* DESKTOP COLUMN */}
+      <aside className="hidden md:block col-span-3 xl:col-span-2 space-y-4 self-start md:mt-15 md:sticky md:top-20">
         <Card>
           <nav className="space-y-1">
             {tabs.map((t) => (
@@ -180,20 +214,6 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
             style={{ backgroundColor: SPOTIFY_GREEN }}
           >
             Resume
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="ml-2 h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"
-              />
-            </svg>
           </a>
         </Card>
       </aside>
