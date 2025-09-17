@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { BadgeCheck } from "lucide-react";
 
-// Spotify-style hero: responsive banner + name + verified label
 export default function HomeSection() {
+  
   return (
     <div className="space-y-6">
       <div className="relative rounded-2xl overflow-hidden border border-zinc-800/60">

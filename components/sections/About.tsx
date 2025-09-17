@@ -130,7 +130,7 @@ export default function AboutSection() {
             <div
               className="mt-4 relative mx-auto"
               // Reserve vertical height so greeting/name never shift
-              style={{ minHeight: "2.6rem" }} // ~ fits md:text-3xl line
+              style={{ minHeight: "2.6rem" }}
             >
               {/* Ghost text to reserve horizontal width (invisible but takes space) */}
               <span className="text-2xl md:text-3xl font-mono invisible select-none">
@@ -157,7 +157,6 @@ export default function AboutSection() {
         </div>
       </Section>
 
-      {/* --- Simple paragraph (no Card) --- */}
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}

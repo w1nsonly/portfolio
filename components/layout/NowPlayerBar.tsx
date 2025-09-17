@@ -19,7 +19,7 @@ export default function NowPlayingBar() {
             <div className="w-10 h-10 rounded bg-gradient-to-br from-emerald-600/30 to-lime-500/20" />
             <div className="min-w-0">
               <p className="text-sm font-medium truncate">
-                Winson — Portfolio (Remastered)
+                Winson — Portfolio
               </p>
               <p className={`${TEXT_MUTED} text-xs truncate`}>
                 Made with React, Tailwind, and just enough Motion

@@ -99,7 +99,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
               onClick={() => setOpen(false)}
               className="p-2 -mr-2 text-zinc-300 hover:text-white text-3xl"
             >
-              ×
+              x
             </button>
           </div>
 
@@ -174,7 +174,23 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
       </div>
 
       {/* DESKTOP COLUMN */}
-      <aside className="hidden md:block col-span-3 xl:col-span-2 space-y-4 self-start md:mt-15 md:sticky md:top-20">
+      <aside className="hidden md:block col-span-3 xl:col-span-2 space-y-4 self-start md:sticky md:top-20">
+        {/* Profile card */}
+        <Card>
+          <div className="flex items-center gap-3">
+            <div className="relative w-10 h-10 rounded-md overflow-hidden border border-zinc-700">
+              <Image
+                src="/pfp.png"
+                alt="Winson Dong"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <p className="text-sm text-zinc-300">Winson Dong</p>
+          </div>
+        </Card>
+
+        {/* Navigation tabs */}
         <Card>
           <nav className="space-y-1">
             {tabs.map((t) => (
@@ -189,6 +205,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
           </nav>
         </Card>
 
+        {/* Quick links + Resume */}
         <Card>
           <p className={`${TEXT_MUTED} text-xs mb-2`}>Quick links</p>
           <div className="flex gap-4 text-2xl">
