@@ -12,7 +12,7 @@ export default function ContactSection() {
 
   return (
     <div className="space-y-6">
-      <Section title="Contact" subtitle="My inbox is open. Let's connect.">
+      <Section title="Message me" subtitle="My inbox is open. Let's connect.">
         <form
           onSubmit={async (e) => {
             e.preventDefault();
@@ -46,7 +46,7 @@ export default function ContactSection() {
           }}
           className="grid md:grid-cols-2 gap-4"
         >
-          
+
           <input
             type="text"
             name="website"

@@ -4,6 +4,7 @@
 import React, { useState } from "react";
 import { Play, Pause, Volume2 } from "lucide-react";
 import { SPOTIFY_GREEN, TEXT_MUTED } from "@/theme/constants";
+import Image from "next/image";
 
 export default function NowPlayingBar() {
   const [playing, setPlaying] = useState(true);
@@ -16,11 +17,17 @@ export default function NowPlayingBar() {
       <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-10 h-10 rounded bg-gradient-to-br from-emerald-600/30 to-lime-500/20" />
+            <div className="relative w-10 h-10 rounded overflow-hidden">
+              <Image
+                src="/album_cover.png"
+                alt="Album cover"
+                fill
+                sizes="40px"
+                className="object-cover [object-position:50%_75%]" 
+              />
+            </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium truncate">
-                Winson — Portfolio
-              </p>
+              <p className="text-sm font-medium truncate">Winson — Portfolio</p>
               <p className={`${TEXT_MUTED} text-xs truncate`}>
                 Made with React, Tailwind, and just enough Motion
               </p>

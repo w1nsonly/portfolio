@@ -12,6 +12,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Winson Portfolio",
   description: "Spotify-inspired developer portfolio",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({children,}: {children: React.ReactNode;}) {

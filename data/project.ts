@@ -57,13 +57,4 @@ export const projects: projectType[] = [
     imageSrc: "/airbnb.png",
     imageAlt: "Machine learning predictions for Airbnb pricing",
   },
-  {
-    title: "Mini Facebook",
-    description:
-      "Built a social media platform using Django with user profiles, status messages, and image uploads. Leveraged Django ORM to model complex relationships (e.g., friends-of-friends, media-to-status linking) and optimize data retrieval for personalized news feeds.",
-    tech: ["Django", "HTML", "Django ORM"],
-    github: "https://github.com/w1nsonly",
-    imageSrc: "/",
-    imageAlt: "Mini Facebook",
-  },
 ];

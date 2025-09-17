@@ -174,7 +174,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
       </div>
 
       {/* DESKTOP COLUMN */}
-      <aside className="hidden md:block col-span-3 xl:col-span-2 space-y-4 self-start md:sticky md:top-20">
+      <aside className="hidden md:block col-span-3 xl:col-span-2 space-y-4 self-start md:sticky md:mt-10">
         {/* Profile card */}
         <Card>
           <div className="flex items-center gap-3">
