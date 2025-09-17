@@ -164,18 +164,18 @@ export default function AboutSection() {
         className="mx-auto max-w-5xl"
       >
         <p className="text-zinc-100/95 text-lg md:text-md leading-relaxed md:leading-8">
-          Born and raised in Mount Sterling, Kentucky, I've always carried with
-          me a love for basketball, family, and continuous growth. Now a senior
-          Computer Science student at Boston University, I channel that same
-          energy into building impactful technology. I'm currently interning as
-          a Fullstack Development Intern at{" "}
+          Born and raised in Mount Sterling, Kentucky, {"I've"} always carried
+          with me a love for basketball, family, and continuous growth. Now a
+          senior Computer Science student at Boston University, I channel that
+          same energy into building impactful technology. {"I'm"} currently
+          interning as a Fullstack Development Intern at{" "}
           <span style={{ color: SPOTIFY_GREEN }}>Hidden Laier</span>. Alongside
           my technical work, I thrive on learning new tools, experimenting with
           side projects, and finding ways to make software more human-centered.
           Beyond coding, I enjoy pushing myself in the gym and following
           basketball, both of which keep me grounded and motivated. With
           small-town roots and a drive for innovation, I aim to craft software
-          that's reliable, intuitive, and meaningful.
+          {"that's"} reliable, intuitive, and meaningful.
         </p>
       </motion.div>
 

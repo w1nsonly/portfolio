@@ -39,14 +39,19 @@ export default function ContactSection() {
               setStatus("ok");
               setMsg("Message sent!");
               form.reset();
-            } catch (err: any) {
+            } catch (err) {
               setStatus("error");
-              setMsg(err?.message || "Something went wrong");
+              const message =
+                err instanceof Error
+                  ? err.message
+                  : typeof err === "string"
+                    ? err
+                    : "Something went wrong";
+              setMsg(message);
             }
           }}
           className="grid md:grid-cols-2 gap-4"
         >
-
           <input
             type="text"
             name="website"

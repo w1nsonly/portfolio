@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import Section from "@/components/layout/Section";
-import Card from "@/components/layout/Card";
 import Badge from "@/components/ui/Badge";
 import { projects } from "@/data/project";
 import { experiences } from "@/data/experiences";
