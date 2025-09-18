@@ -22,17 +22,8 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
-  const [isOpen, setOpen] = useState(false);
 
-  // Lock background scroll when the sheet is open
-  useEffect(() => {
-    if (!isOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [isOpen]);
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <>

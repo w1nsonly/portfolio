@@ -174,8 +174,8 @@ export default function AboutSection() {
           side projects, and finding ways to make software more human-centered.
           Beyond coding, I enjoy pushing myself in the gym and following
           basketball, both of which keep me grounded and motivated. With
-          small-town roots and a drive for innovation, I aim to craft software
-          {"that's"} reliable, intuitive, and meaningful.
+          small-town roots and a drive for innovation, I aim to craft 
+          software {"that's"} reliable, intuitive, and meaningful.
         </p>
       </motion.div>
 
