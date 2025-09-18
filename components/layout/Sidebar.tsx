@@ -111,6 +111,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
                 onClick={() => {
                   onChange(t.key);
                   setOpen(false);
+                  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                 }}
                 className={`w-full text-left flex items-center gap-3 rounded-lg px-4 py-4 text-lg
                   hover:bg-white/5 active:bg-white/10 transition
@@ -174,7 +175,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
       </div>
 
       {/* DESKTOP COLUMN */}
-      <aside className="hidden md:block col-span-3 xl:col-span-2 space-y-4 self-start md:sticky md:mt-10">
+      <aside className="sticky top-0 z-50 mt-10 hidden md:block col-span-3 xl:col-span-2 space-y-4 self-start">
         {/* Profile card */}
         <Card>
           <div className="flex items-center gap-3">
@@ -199,7 +200,10 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
                 label={t.key}
                 icon={t.icon}
                 active={active === t.key}
-                onClick={() => onChange(t.key)}
+                onClick={() => {
+                  onChange(t.key);
+                  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+                }}
               />
             ))}
           </nav>
