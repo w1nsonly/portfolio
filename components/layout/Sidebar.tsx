@@ -83,7 +83,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
           role="dialog"
           aria-modal="true"
           className={[
-            "absolute right-0 top-0 h-svh w-[40%] max-w-[14rem]",
+            "absolute right-0 top-0 h-svh w-[45%] max-w-[14rem]",
             "border-l border-zinc-800/70 bg-[#101010]/90 shadow-lg",
             "transition-transform duration-300 will-change-transform",
             isOpen ? "translate-x-0" : "translate-x-full",
@@ -156,7 +156,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
               Resume
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="ml-2 h-5 w-5"
+                className="ml-2 h-5 w-5 shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -231,6 +231,21 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
             style={{ backgroundColor: SPOTIFY_GREEN }}
           >
             Resume
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              className="ml-2 h-5 w-5 shrink-0 transition-transform group-hover:translate-y-0.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"
+              />
+            </svg>
           </a>
         </Card>
       </aside>
