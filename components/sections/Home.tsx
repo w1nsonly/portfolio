@@ -38,7 +38,7 @@ export default function HomeSection() {
 
               {/* Subtitle */}
               <p className="text-xs sm:text-sm text-white/70">
-                Boston University • Full-Stack Development Intern @ Hidden Laier
+                Boston University • Software Engineer Intern (Full-Stack) @ Hidden Laier
               </p>
             </div>
           </div>
