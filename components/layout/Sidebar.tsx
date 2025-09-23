@@ -260,7 +260,10 @@ const socials: SocialProps = [
     url: "https://www.linkedin.com/in/winsondong/",
     icon: <FaLinkedin />,
   },
-  { title: "GitHub", url: "https://github.com/w1nsonly", icon: <FaGithub /> },
+  { title: "GitHub", 
+    url: "https://github.com/w1nsonly", 
+    icon: <FaGithub /> 
+  },
   {
     title: "Email",
     url: "mailto:mrwinsondong@gmail.com",

@@ -11,12 +11,8 @@ interface TabButtonProps {
   onClick?: () => void;
 }
 
-export default function TabButton({
-  icon: Icon,
-  label,
-  active = false,
-  onClick,
-}: TabButtonProps) {
+export default function TabButton({icon: Icon, label, active = false, onClick,}: TabButtonProps) {
+  
   return (
     <button
       onClick={onClick}
