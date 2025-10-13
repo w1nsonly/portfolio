@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Section from "@/components/layout/Section";
 import Badge from "@/components/ui/Badge";
-import { projects } from "@/data/project";
+import { projects } from "@/data/projects";
 import { experiences } from "@/data/experiences";
 import { TEXT_MUTED, SPOTIFY_GREEN } from "@/theme/constants";
 import { Github, ExternalLink } from "lucide-react";
