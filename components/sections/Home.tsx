@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { BadgeCheck } from "lucide-react";
+import { BadgeCheck, Music } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function HomeSection() {
   
@@ -38,7 +39,7 @@ export default function HomeSection() {
 
               {/* Subtitle */}
               <p className="text-xs sm:text-sm text-white/70">
-                Boston University • Software Engineer Intern (Full-Stack) @ Hidden Laier
+                Boston University • Software Engineer Intern @ Hidden Laier
               </p>
             </div>
           </div>

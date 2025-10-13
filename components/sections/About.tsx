@@ -168,7 +168,7 @@ export default function AboutSection() {
           with me a love for basketball, family, and continuous growth. Now a
           senior Computer Science student at Boston University, I channel that
           same energy into building impactful technology. {"I'm"} currently
-          interning as a Fullstack Development Intern at{" "}
+          interning as a Software Engineer Intern at{" "}
           <span style={{ color: SPOTIFY_GREEN }}>Hidden Laier</span>. Alongside
           my technical work, I thrive on learning new tools, experimenting with
           side projects, and finding ways to make software more human-centered.
