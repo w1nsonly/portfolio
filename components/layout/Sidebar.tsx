@@ -138,7 +138,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
           {/* Resume docked at bottom */}
           <div className="absolute left-0 right-0 bottom-0 p-4 pb-[max(env(safe-area-inset-bottom),1rem)]">
             <a
-              href="/resume.pdf"
+              href="/winson_dong_resume.pdf"
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}
@@ -219,7 +219,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
           </div>
 
           <a
-            href="/resume.pdf"
+            href="/winson_dong_resume.pdf"
             target="_blank"
             rel="noreferrer"
             className="mt-4 inline-flex items-center justify-center w-full rounded-full px-5 py-2 font-medium text-black transition"
