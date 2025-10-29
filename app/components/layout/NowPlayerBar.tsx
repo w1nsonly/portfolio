@@ -1,9 +1,9 @@
-// File: components/layout/NowPlayerBar.tsx
+// File: app/components/layout/NowPlayerBar.tsx
 
 "use client";
 import React, { useState } from "react";
 import { Play, Pause, Volume2 } from "lucide-react";
-import { SPOTIFY_GREEN, TEXT_MUTED } from "@/theme/constants";
+import { SPOTIFY_GREEN, TEXT_MUTED } from "@/app/theme/constants";
 import Image from "next/image";
 
 export default function NowPlayingBar() {
@@ -19,7 +19,7 @@ export default function NowPlayingBar() {
           <div className="flex items-center gap-3 min-w-0">
             <div className="relative w-10 h-10 rounded overflow-hidden">
               <Image
-                src="/album_cover.png"
+                src="/designs/album_cover.png"
                 alt="Album cover"
                 fill
                 sizes="40px"
@@ -29,7 +29,7 @@ export default function NowPlayingBar() {
             <div className="min-w-0">
               <p className="text-sm font-medium truncate">Winson — Portfolio</p>
               <p className={`${TEXT_MUTED} text-xs truncate`}>
-                Made with React, Tailwind, and just enough Motion
+                SPOTIFY VIBESSSSS xx VIBES THAT ARE SPOTIFYYYY 😛
               </p>
             </div>
           </div>

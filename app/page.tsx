@@ -1,4 +1,4 @@
-import SpotifyPortfolio from "@/components/SpotifyPortfolio"
+import SpotifyPortfolio from "@/app/components/SpotifyPortfolio"
 
 
 export default function Page() {

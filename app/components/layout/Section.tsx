@@ -1,8 +1,8 @@
-// File: components/layout/Section.tsx
+// File: app/components/layout/Section.tsx
 
 import React from "react";
 import Card from "./Card";
-import { TEXT_MUTED } from "@/theme/constants";
+import { TEXT_MUTED } from "@/app/theme/constants";
 
 interface SectionProps {
   title: string;

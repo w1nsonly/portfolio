@@ -1,10 +1,10 @@
-// File: components/sections/About.tsx
+// File: app/components/sections/About.tsx
 
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
-import Section from "@/components/layout/Section";
+import Section from "@/app/components/layout/Section";
 import { motion } from "framer-motion";
-import { SPOTIFY_GREEN } from "@/theme/constants";
+import { SPOTIFY_GREEN } from "@/app/theme/constants";
 import Image from "next/image";
 
 /* Greeting options (one is chosen per refresh) */
@@ -94,7 +94,7 @@ export default function AboutSection() {
           >
             <div className="relative aspect-square rounded-2xl overflow-hidden border border-zinc-800/60 transition-transform duration-500 hover:scale-103">
               <Image
-                src="/winson.jpg"
+                src="/designs/winson.jpg"
                 alt="Winson Dong"
                 fill
                 className="object-cover object-bottom"

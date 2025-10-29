@@ -1,8 +1,8 @@
-// File: components/sections/Home.tsx
+// File: app/components/sections/Home.tsx
 
 import React from "react";
 import Image from "next/image";
-import { BadgeCheck, Music } from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function HomeSection() {
@@ -13,10 +13,11 @@ export default function HomeSection() {
         {/* Aspect-ratio wrapper keeps the banner contained on all screens */}
         <div className="relative w-full h-[260px] sm:h-[400px]">
           <Image
-            src="/banner.gif"
+            src="/designs/banner.gif"
             alt="Winson Dong"
             fill
             priority
+            unoptimized
             className="object-cover"
           />
 

@@ -1,8 +1,8 @@
-// File: components/layout/TabButton.tsx
+// File: app/components/layout/TabButton.tsx
 
 "use client";
 import React from "react";
-import { TEXT_MUTED } from "@/theme/constants";
+import { TEXT_MUTED } from "@/app/theme/constants";
 
 interface TabButtonProps {
   icon: React.ComponentType<{ size?: number; className?: string }>;

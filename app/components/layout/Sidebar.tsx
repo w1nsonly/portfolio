@@ -1,14 +1,15 @@
-// File: components/layout/Sidebar.tsx
+// File: app/components/layout/Sidebar.tsx
 
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Card from "@/components/layout/Card";
+import Card from "@/app/components/layout/Card";
 import TabButton from "./TabButton";
-import { SPOTIFY_GREEN, TEXT_MUTED } from "@/theme/constants";
+import { SPOTIFY_GREEN, TEXT_MUTED } from "@/app/theme/constants";
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa6";
 import Image from "next/image";
 import { Squash as Hamburger } from "hamburger-react";
+import { Music } from "lucide-react";
 
 export type TabItem = {
   key: string;
@@ -24,6 +25,9 @@ interface SidebarProps {
 export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
 
   const [isOpen, setOpen] = useState(false);
+  
+  // Spotify Playlist ID - Change this to update the playlist everywhere
+  // const spotifyPlaylistId = "0y4DJgH12XIOacelKtHtvh";
 
   return (
     <>
@@ -34,7 +38,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
             <div className="flex items-center gap-3">
               <div className="relative w-10 h-10 rounded-md overflow-hidden border border-zinc-700">
                 <Image
-                  src="/pfp.png"
+                  src="/designs/pfp.png"
                   alt="Winson Dong"
                   fill
                   className="object-cover"
@@ -135,10 +139,27 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
             </div>
           </div>
 
+          {/* Spotify Player */}
+          {/* <div className="px-4 mt-4">
+            <div className="flex items-center gap-2 mb-3">
+              <Music className="text-emerald-400" size={18} />
+              <p className="text-sm font-medium">Now Playing</p>
+            </div>
+            <iframe
+              className="rounded-lg w-full border-0"
+              src={`https://open.spotify.com/embed/playlist/${spotifyPlaylistId}?utm_source=generator&theme=0`}
+              height="152"
+              style={{ border: 0 }}
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title="Spotify Playlist Player"
+            />
+          </div> */}
+
           {/* Resume docked at bottom */}
           <div className="absolute left-0 right-0 bottom-0 p-4 pb-[max(env(safe-area-inset-bottom),1rem)]">
             <a
-              href="/winson_dong_resume.pdf"
+              href="/resume/winson_dong_resume.pdf"
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}
@@ -172,7 +193,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10 rounded-md overflow-hidden border border-zinc-700">
               <Image
-                src="/pfp.png"
+                src="/designs/pfp.png"
                 alt="Winson Dong"
                 fill
                 className="object-cover"
@@ -219,7 +240,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
           </div>
 
           <a
-            href="/winson_dong_resume.pdf"
+            href="/resume/winson_dong_resume.pdf"
             target="_blank"
             rel="noreferrer"
             className="mt-4 inline-flex items-center justify-center w-full rounded-full px-5 py-2 font-medium text-black transition"
@@ -243,6 +264,23 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
             </svg>
           </a>
         </Card>
+
+        {/* Spotify Player */}
+        {/* <Card>
+          <div className="flex items-center gap-2 mb-3">
+            <Music className="text-emerald-400" size={18} />
+            <p className="text-sm font-medium">Now Playing</p>
+          </div>
+          <iframe
+            className="rounded-lg w-full border-0"
+            src={`https://open.spotify.com/embed/playlist/${spotifyPlaylistId}?utm_source=generator&theme=0`}
+            height="152"
+            style={{ border: 0 }}
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            title="Spotify Playlist Player"
+          />
+        </Card> */}
       </aside>
     </>
   );

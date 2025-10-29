@@ -18,7 +18,7 @@ export const projects: projectType[] = [
     tech: ["Next.js", "TypeScript", "MongoDB", "Tailwind CSS", "Google Gemini AI", "Capital One Nessie API"],
     github: "https://github.com/w1nsonly/wallet-wrapped",
     href: "https://walletwrapped.us",
-    imageSrc: "/wallet_wrapped.png",
+    imageSrc: "/project_covers/wallet_wrapped.png",
     imageAlt: "Wallet Wrapped Website",
   },
   {
@@ -28,7 +28,7 @@ export const projects: projectType[] = [
     tech: ["MongoDB", "Express", "React", "Node", "Railway", "Firebase"],
     github: "https://github.com/w1nsonly/allin",
     href: "https://all-in-4ce60.web.app/",
-    imageSrc: "/all_in_website.png",
+    imageSrc: "/project_covers/all_in.png",
     imageAlt: "All In MERN Website",
   },
   {
@@ -38,7 +38,7 @@ export const projects: projectType[] = [
     tech: ["Next.js", "Django REST", "LangChain", "OpenAI", "Chroma"],
     github: "https://github.com/w1nsonly/city-king-buffet",
     href: "http://citykingbuffetky.com/",
-    imageSrc: "/city_king_buffet.png",
+    imageSrc: "/project_covers/city_king_buffet.png",
     imageAlt: "City King Buffet Image",
   },
   {
@@ -55,7 +55,7 @@ export const projects: projectType[] = [
     ],
     github: "https://github.com/w1nsonly/BostonShootingData",
     href: "https://cs391-final-project-rho.vercel.app/",
-    imageSrc: "/boston_shooting_website.png",
+    imageSrc: "/project_covers/boston_shooting.png",
     imageAlt: "Data dashboard showing Boston shooting incidents",
   },
   {
@@ -64,7 +64,7 @@ export const projects: projectType[] = [
       "Airbnb Price Prediction is a machine learning app that estimates rental prices in New York City. It highlights how factors like location, amenities, and host details influence pricing through data-driven insights and feature analysis.",
     tech: ["Python", "pandas", "Scikit-Learn"],
     github: "https://github.com/w1nsonly",
-    imageSrc: "/airbnb.png",
+    imageSrc: "/project_covers/airbnb_price_prediction.png",
     imageAlt: "Machine learning predictions for Airbnb pricing",
   },
 ];

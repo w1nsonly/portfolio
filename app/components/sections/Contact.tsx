@@ -1,8 +1,8 @@
-// components/sections/Contact.tsx
+// File: app/components/sections/Contact.tsx
 "use client";
 import React, { useState } from "react";
-import Section from "@/components/layout/Section";
-import { SPOTIFY_GREEN } from "@/theme/constants";
+import Section from "@/app/components/layout/Section";
+import { SPOTIFY_GREEN } from "@/app/theme/constants";
 
 export default function ContactSection() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">(

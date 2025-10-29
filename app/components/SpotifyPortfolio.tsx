@@ -1,4 +1,4 @@
-// File: components/ui/SpotifyPortfolio.tsx
+// File: app/components/SpotifyPortfolio.tsx
 
 "use client";
 import React from "react";
@@ -16,7 +16,7 @@ import HomeSection from "./sections/Home";
 import WorkSection from "./sections/Work";
 import AboutSection from "./sections/About";
 import ContactSection from "./sections/Contact";
-import { BG, SPOTIFY_GREEN } from "@/theme/constants";
+import { BG, SPOTIFY_GREEN } from "@/app/theme/constants";
 
 const tabs = [
   { key: "Home", icon: HomeIcon },

@@ -1,7 +1,7 @@
-// File: components/layout/Card.tsx
+// File: app/components/layout/Card.tsx
 
 import React from "react";
-import { BG_ELEVATED } from "@/theme/constants";
+import { BG_ELEVATED } from "@/app/theme/constants";
 
 interface CardProps {
   children: React.ReactNode;
