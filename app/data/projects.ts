@@ -12,6 +12,15 @@ export type projectType = {
 
 export const projects: projectType[] = [
   {
+    title: "Machine Learning for Stolen Artifacts",
+    description:
+     "Machine Learning for Stolen Artifacts is a full-stack web portal for the Khmer Statuary Project that enables researchers to upload, search, and moderate Cambodian artifact images for provenance research. The platform features secure submissions, standardized metadata, and admin moderation tools to aid artifact identification and repatriation efforts.",
+    tech: ["Next.js", "Tailwind CSS", "FastAPI", "PostgreSQL", "SQLAlchemy", "Cloud Storage", "Clerk"],
+    github: "https://github.com/w1nsonly/se-stolen-artifacts",
+    imageSrc: "/project_covers/KSP_logo.png",
+    imageAlt: "KSP Logo",
+  },
+  {
     title: "Wallet Wrapped",
     description:
       "Wallet Wrapped transforms your financial data into personalized insights and beautiful visualizations. The app combines real banking data with AI-powered analytics to create your very own 'Financial Wrapped' experience, featuring interactive dashboards, goal tracking, and engaging spending insights.",
