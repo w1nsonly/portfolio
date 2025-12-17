@@ -40,7 +40,7 @@ export default function HomeSection() {
 
               {/* Subtitle */}
               <p className="text-xs sm:text-sm text-white/70">
-                Boston University • Software Engineer Intern @ Hidden Laier
+                Software Engineer • New York City
               </p>
             </div>
           </div>

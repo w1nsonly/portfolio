@@ -11,7 +11,7 @@ import Image from "next/image";
 const GREETINGS = ["Hello, World.", "Hey there.", "<Hello />", "Greetings!"];
 
 /* Rotating titles with typing effect */
-const TITLES = ["Software Engineer", "Full Stack Developer"];
+const TITLES = ["Software Engineer", "Full Stack Developer", "Systems Engineer"];
 const LONGEST_TITLE = "Full Stack Developer"; // ghost text to reserve width
 
 /* --- Typewriter hook for TITLES only --- */
@@ -83,7 +83,7 @@ export default function AboutSection() {
 
   return (
     <div className="space-y-8">
-      <Section title="About Me" subtitle="Senior CS @ Boston University">
+      <Section title="About Me" subtitle="CS Graduate @ Boston University">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Left visual */}
           <motion.div
@@ -164,18 +164,7 @@ export default function AboutSection() {
         className="mx-auto max-w-5xl"
       >
         <p className="text-zinc-100/95 text-lg md:text-md leading-relaxed md:leading-8">
-          Born and raised in Mount Sterling, Kentucky, {"I've"} always carried
-          with me a love for basketball, family, and continuous growth. Now a
-          senior Computer Science student at Boston University, I channel that
-          same energy into building impactful technology. {"I'm"} currently
-          interning as a Software Engineer Intern at{" "}
-          <span style={{ color: SPOTIFY_GREEN }}>Hidden Laier</span>. Alongside
-          my technical work, I thrive on learning new tools, experimenting with
-          side projects, and finding ways to make software more human-centered.
-          Beyond coding, I enjoy pushing myself in the gym and following
-          basketball, both of which keep me grounded and motivated. With
-          small-town roots and a drive for innovation, I aim to craft 
-          software {"that's"} reliable, intuitive, and meaningful.
+          Hello! {"I'm"} from Mount Sterling, Kentucky, and {"I've"} always been passionate about basketball, family, and continuous growth. I graduated from Boston University with a Computer Science degree, and now {"I'm"} working as a Software Engineer. My interests lie in full-stack development, distributed systems, and creating human-centered software solutions. When {"I'm"} not coding, {"you'll"} find me learning new tools, experimenting with side projects, or pushing myself in the gym. I also keep up with basketball—both keep me grounded and motivated. With small-town roots and a drive for innovation, {"I'm"} all about building software {"that's"} reliable, intuitive, and meaningful.
         </p>
       </motion.div>
 

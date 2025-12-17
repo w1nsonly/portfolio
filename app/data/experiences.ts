@@ -7,13 +7,18 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
+    company: "BU Spark",
+    position: "Full Stack Engineer",
+    date: "Sep 2025 - Dec 2025",
+  },
+  {
     company: "Hidden Laier",
     position: "Software Engineer Intern",
-    date: "Sep 2025 - Present",
+    date: "Sep 2025 - Dec 2025",
   },
   {
     company: "City King Buffet",
-    position: "Freelance Web & AI Integration Developer",
+    position: "Software Engineer (Contract)",
     date: "Jul 2025 - Aug 2025",
   },
   {
