@@ -26,7 +26,7 @@ export const projects: projectType[] = [
       "Wallet Wrapped transforms your financial data into personalized insights and beautiful visualizations. The app combines real banking data with AI-powered analytics to create your very own 'Financial Wrapped' experience, featuring interactive dashboards, goal tracking, and engaging spending insights.",
     tech: ["Next.js", "TypeScript", "MongoDB", "Tailwind CSS", "Google Gemini AI", "Capital One Nessie API"],
     github: "https://github.com/w1nsonly/wallet-wrapped",
-    href: "https://walletwrapped.us",
+    href: "https://devpost.com/software/the-brown-and-the-clown",
     imageSrc: "/project_covers/wallet_wrapped.png",
     imageAlt: "Wallet Wrapped Website",
   },
