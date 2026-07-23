@@ -1,13 +1,53 @@
 // File: app/components/layout/NowPlayerBar.tsx
 
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import {
+  Play,
+  Pause,
+  SkipBack,
+  SkipForward,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
 import { SPOTIFY_GREEN, TEXT_MUTED } from "@/app/theme/constants";
 import Image from "next/image";
 
-// Drop an audio file at public/audio/now-playing.mp3 — the path stays fixed.
-const TRACK_SRC = "/audio/now-playing.mp3";
+// Playlist — drop mp3s in public/audio/ and add an entry for each one.
+// `anime` is kept for reference (where each track is from) even though only
+// the title and artist are rendered today.
+const TRACKS = [
+  {
+    src: "/audio/departure.mp3",
+    title: "departure!",
+    artist: "Masatoshi Ono",
+    anime: "Hunter x Hunter (2011) — Opening 1",
+  },
+  {
+    src: "/audio/shinzou-wo-sasageyo.mp3",
+    title: "Shinzou wo Sasageyo!",
+    artist: "Linked Horizon",
+    anime: "Attack on Titan Season 2 — Opening",
+  },
+  {
+    src: "/audio/lost-in-paradise.mp3",
+    title: "Lost in Paradise",
+    artist: "ALI feat. AKLO",
+    anime: "Jujutsu Kaisen — Ending 1",
+  },
+  {
+    src: "/audio/grandeur.mp3",
+    title: "Grandeur",
+    artist: "Snow Man",
+    anime: "Black Clover — Opening 13",
+  },
+  {
+    src: "/audio/akuma-no-ko.mp3",
+    title: "Akuma no Ko",
+    artist: "Ai Higuchi",
+    anime: "Attack on Titan Final Season — Ending 2",
+  },
+];
 
 function formatTime(seconds: number) {
   if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
@@ -24,13 +64,68 @@ export default function NowPlayingBar() {
   const [volume, setVolume] = useState(0.66);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [trackIndex, setTrackIndex] = useState(0);
+  // Play order into TRACKS. Starts unshuffled so the server and client render
+  // the same markup, then gets shuffled on mount (see below).
+  const [order, setOrder] = useState(() => TRACKS.map((_, i) => i));
   const draggingRef = useRef<null | "volume" | "seek">(null);
   const fixingDurationRef = useRef(false);
+  // Whether the next loaded track should start playing on its own.
+  const autoPlayNextRef = useRef(false);
+
+  const track = TRACKS[order[trackIndex]];
+
+  // Shuffle once per page load. Doing this after mount (rather than during
+  // render) keeps hydration deterministic.
+  useEffect(() => {
+    setOrder((prev) => {
+      const next = [...prev];
+      for (let i = next.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [next[i], next[j]] = [next[j], next[i]];
+      }
+      return next;
+    });
+  }, []);
 
   // Keep the audio element's volume in sync with state.
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = volume;
   }, [volume]);
+
+  // Load the new source when the track changes, resuming playback if we were
+  // already playing (or if the change came from a skip button).
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    setCurrentTime(0);
+    setDuration(0);
+    audio.load();
+    if (autoPlayNextRef.current) {
+      autoPlayNextRef.current = false;
+      audio.play().catch(() => setPlaying(false));
+    }
+  }, [track.src]);
+
+  const goToTrack = useCallback((next: number) => {
+    autoPlayNextRef.current = true;
+    setTrackIndex((next + TRACKS.length) % TRACKS.length);
+  }, []);
+
+  const nextTrack = useCallback(() => {
+    goToTrack(trackIndex + 1);
+  }, [goToTrack, trackIndex]);
+
+  // Standard behaviour: restart the song first, jump back only if near the start.
+  const prevTrack = useCallback(() => {
+    const audio = audioRef.current;
+    if (audio && audio.currentTime > 3) {
+      audio.currentTime = 0;
+      setCurrentTime(0);
+      return;
+    }
+    goToTrack(trackIndex - 1);
+  }, [goToTrack, trackIndex]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -84,6 +179,10 @@ export default function NowPlayingBar() {
 
   const muted = volume === 0;
   const progress = duration ? (currentTime / duration) * 100 : 0;
+  const multiTrack = TRACKS.length > 1;
+
+  const skipButtonClass =
+    "text-zinc-400 hover:text-white transition disabled:opacity-30 disabled:hover:text-zinc-400";
 
   return (
     <div
@@ -92,12 +191,11 @@ export default function NowPlayingBar() {
     >
       <audio
         ref={audioRef}
-        src={TRACK_SRC}
-        loop
+        src={track.src}
         preload="metadata"
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
-        onEnded={() => setPlaying(false)}
+        onEnded={nextTrack}
         onLoadedMetadata={(e) => {
           const audio = e.currentTarget;
           if (Number.isFinite(audio.duration)) {
@@ -126,7 +224,7 @@ export default function NowPlayingBar() {
         }}
       />
       <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-        <div className="h-16 flex items-center justify-between gap-4">
+        <div className="h-20 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0 flex-1">
             <div className="relative w-10 h-10 rounded overflow-hidden shrink-0">
               <Image
@@ -138,73 +236,118 @@ export default function NowPlayingBar() {
               />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium truncate">A Quiet Perseverance</p>
+              <p className="text-sm font-medium truncate">DaDaDa, DaDaDa</p>
               <p className={`${TEXT_MUTED} text-xs truncate`}>
                 Winson Dong · Software Engineer
               </p>
             </div>
           </div>
 
-          {/* Center: play control + seek bar */}
-          <div className="hidden md:flex items-center gap-3 flex-1 max-w-md relative">
-            <button
-              onClick={togglePlay}
-              className="rounded-full p-2 bg-white/10 hover:bg-white/20 transition shrink-0"
-              aria-label={playing ? "Pause" : "Play"}
-              type="button"
-            >
-              {playing ? <Pause size={18} /> : <Play size={18} />}
-            </button>
-            <span className="text-[11px] tabular-nums text-zinc-400 w-9 text-right shrink-0">
-              {formatTime(currentTime)}
-            </span>
-            <div
-              ref={seekTrackRef}
-              role="slider"
-              aria-label="Seek"
-              aria-valuemin={0}
-              aria-valuemax={Math.round(duration)}
-              aria-valuenow={Math.round(currentTime)}
-              tabIndex={0}
-              onPointerDown={(e) => {
-                draggingRef.current = "seek";
-                setSeekFromClientX(e.clientX);
-              }}
-              onKeyDown={(e) => {
-                const audio = audioRef.current;
-                if (!audio) return;
-                if (e.key === "ArrowRight")
-                  audio.currentTime = Math.min(duration, audio.currentTime + 5);
-                if (e.key === "ArrowLeft")
-                  audio.currentTime = Math.max(0, audio.currentTime - 5);
-              }}
-              className="group flex-1 h-3 flex items-center cursor-pointer touch-none"
-            >
-              <div className="relative w-full h-1 rounded-full bg-zinc-700">
-                <div
-                  className="absolute inset-y-0 left-0 h-1 rounded-full"
-                  style={{ width: `${progress}%`, backgroundColor: SPOTIFY_GREEN }}
-                />
-              </div>
+          {/* Center: transport controls stacked above the seek bar */}
+          <div className="hidden md:flex flex-col items-center gap-1.5 flex-1 max-w-md relative">
+            <div className="flex items-center gap-5">
+              <button
+                onClick={prevTrack}
+                className={skipButtonClass}
+                aria-label="Previous track"
+                type="button"
+              >
+                <SkipBack size={16} fill="currentColor" />
+              </button>
+              <button
+                onClick={togglePlay}
+                className="rounded-full p-2 bg-white/10 hover:bg-white/20 transition"
+                aria-label={playing ? "Pause" : "Play"}
+                type="button"
+              >
+                {playing ? <Pause size={18} /> : <Play size={18} />}
+              </button>
+              <button
+                onClick={nextTrack}
+                className={skipButtonClass}
+                aria-label="Next track"
+                type="button"
+                disabled={!multiTrack}
+              >
+                <SkipForward size={16} fill="currentColor" />
+              </button>
             </div>
-            <span className="text-[11px] tabular-nums text-zinc-400 w-9 shrink-0">
-              {formatTime(duration)}
-            </span>
-            <span className="hidden lg:inline absolute left-full top-1/2 -translate-y-1/2 ml-4 whitespace-nowrap text-xs text-zinc-400">
-              ♪ 10 Bands · Drake
+
+            <div className="flex items-center gap-3 w-full">
+              <span className="text-[11px] tabular-nums text-zinc-400 w-9 text-right shrink-0">
+                {formatTime(currentTime)}
+              </span>
+              <div
+                ref={seekTrackRef}
+                role="slider"
+                aria-label="Seek"
+                aria-valuemin={0}
+                aria-valuemax={Math.round(duration)}
+                aria-valuenow={Math.round(currentTime)}
+                tabIndex={0}
+                onPointerDown={(e) => {
+                  draggingRef.current = "seek";
+                  setSeekFromClientX(e.clientX);
+                }}
+                onKeyDown={(e) => {
+                  const audio = audioRef.current;
+                  if (!audio) return;
+                  if (e.key === "ArrowRight")
+                    audio.currentTime = Math.min(duration, audio.currentTime + 5);
+                  if (e.key === "ArrowLeft")
+                    audio.currentTime = Math.max(0, audio.currentTime - 5);
+                }}
+                className="group flex-1 h-3 flex items-center cursor-pointer touch-none"
+              >
+                <div className="relative w-full h-1 rounded-full bg-zinc-700">
+                  <div
+                    className="absolute inset-y-0 left-0 h-1 rounded-full"
+                    style={{
+                      width: `${progress}%`,
+                      backgroundColor: SPOTIFY_GREEN,
+                    }}
+                  />
+                </div>
+              </div>
+              <span className="text-[11px] tabular-nums text-zinc-400 w-9 shrink-0">
+                {formatTime(duration)}
+              </span>
+            </div>
+
+            <span className="hidden lg:inline absolute left-full bottom-0 ml-4 whitespace-nowrap text-xs text-zinc-400">
+              ♪ {track.title} · {track.artist}
             </span>
           </div>
 
-          <div className="flex items-center gap-4 flex-1 justify-end">
-            {/* Play control for small screens (center section is hidden there) */}
-            <button
-              onClick={togglePlay}
-              className="md:hidden rounded-full p-2 bg-white/10 hover:bg-white/20 transition"
-              aria-label={playing ? "Pause" : "Play"}
-              type="button"
-            >
-              {playing ? <Pause size={18} /> : <Play size={18} />}
-            </button>
+          <div className="flex items-center gap-4 flex-none md:flex-1 justify-end">
+            {/* Transport for small screens (center section is hidden there) */}
+            <div className="md:hidden flex items-center gap-4">
+              <button
+                onClick={prevTrack}
+                className={skipButtonClass}
+                aria-label="Previous track"
+                type="button"
+              >
+                <SkipBack size={16} fill="currentColor" />
+              </button>
+              <button
+                onClick={togglePlay}
+                className="rounded-full p-2 bg-white/10 hover:bg-white/20 transition"
+                aria-label={playing ? "Pause" : "Play"}
+                type="button"
+              >
+                {playing ? <Pause size={18} /> : <Play size={18} />}
+              </button>
+              <button
+                onClick={nextTrack}
+                className={skipButtonClass}
+                aria-label="Next track"
+                type="button"
+                disabled={!multiTrack}
+              >
+                <SkipForward size={16} fill="currentColor" />
+              </button>
+            </div>
             <div className="hidden sm:flex items-center gap-2 text-zinc-400">
               <button
                 onClick={() => setVolume((v) => (v === 0 ? 0.66 : 0))}
