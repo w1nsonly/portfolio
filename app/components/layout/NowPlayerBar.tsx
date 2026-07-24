@@ -238,7 +238,7 @@ export default function NowPlayingBar() {
             <div className="min-w-0">
               <p className="text-sm font-medium truncate">DaDaDa, DaDaDa</p>
               <p className={`${TEXT_MUTED} text-xs truncate`}>
-                Winson Dong · Software Engineer
+                Winson Dong
               </p>
             </div>
           </div>
