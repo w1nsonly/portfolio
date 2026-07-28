@@ -237,8 +237,17 @@ export default function NowPlayingBar() {
             </div>
             <div className="min-w-0">
               <p className="text-sm font-medium truncate">DaDaDa, DaDaDa</p>
-              <p className={`${TEXT_MUTED} text-xs truncate`}>
-                Winson Dong
+              <p className={`${TEXT_MUTED} relative h-4 text-xs`}>
+                <span className="hidden truncate md:block">Winson Dong</span>
+                <span className="now-playing-subtitle absolute inset-0 truncate md:hidden">
+                  Winson Dong
+                </span>
+                <span
+                  className="now-playing-subtitle now-playing-subtitle-credit absolute inset-0 whitespace-nowrap md:hidden"
+                  style={{ color: SPOTIFY_GREEN }}
+                >
+                  ♪ {track.title} · {track.artist}
+                </span>
               </p>
             </div>
           </div>
@@ -314,7 +323,10 @@ export default function NowPlayingBar() {
               </span>
             </div>
 
-            <span className="hidden lg:inline absolute left-full bottom-0 ml-4 whitespace-nowrap text-xs text-zinc-400">
+            <span
+              className="hidden lg:inline absolute left-full bottom-0 ml-4 whitespace-nowrap text-xs"
+              style={{ color: SPOTIFY_GREEN }}
+            >
               ♪ {track.title} · {track.artist}
             </span>
           </div>

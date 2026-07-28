@@ -30,3 +30,35 @@ html, body {
   overflow-x: clip;
   scrollbar-gutter: stable;
 }
+
+@keyframes now-playing-subtitle-crossfade {
+  0%,
+  40%,
+  100% {
+    opacity: 1;
+  }
+
+  50%,
+  90% {
+    opacity: 0;
+  }
+}
+
+.now-playing-subtitle {
+  animation: now-playing-subtitle-crossfade 8s ease-in-out infinite;
+}
+
+.now-playing-subtitle-credit {
+  opacity: 0;
+  animation-delay: -4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .now-playing-subtitle {
+    animation: none;
+  }
+
+  .now-playing-subtitle-credit {
+    display: none;
+  }
+}
