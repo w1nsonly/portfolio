@@ -61,6 +61,9 @@ export default function NowPlayingBar() {
   const volumeTrackRef = useRef<HTMLDivElement>(null);
   const seekTrackRef = useRef<HTMLDivElement>(null);
   const [playing, setPlaying] = useState(false);
+  // Gates the mobile subtitle crossfade — don't reveal the real track until
+  // the user has actually started playback at least once.
+  const [hasPlayedOnce, setHasPlayedOnce] = useState(false);
   const [volume, setVolume] = useState(0.66);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -193,7 +196,10 @@ export default function NowPlayingBar() {
         ref={audioRef}
         src={track.src}
         preload="metadata"
-        onPlay={() => setPlaying(true)}
+        onPlay={() => {
+          setPlaying(true);
+          setHasPlayedOnce(true);
+        }}
         onPause={() => setPlaying(false)}
         onEnded={nextTrack}
         onLoadedMetadata={(e) => {
@@ -239,15 +245,23 @@ export default function NowPlayingBar() {
               <p className="text-sm font-medium truncate">DaDaDa, DaDaDa</p>
               <p className={`${TEXT_MUTED} relative h-4 text-xs`}>
                 <span className="hidden truncate md:block">Winson Dong</span>
-                <span className="now-playing-subtitle absolute inset-0 truncate md:hidden">
-                  Winson Dong
-                </span>
-                <span
-                  className="now-playing-subtitle now-playing-subtitle-credit absolute inset-0 whitespace-nowrap md:hidden"
-                  style={{ color: SPOTIFY_GREEN }}
-                >
-                  ♪ {track.title} · {track.artist}
-                </span>
+                {hasPlayedOnce ? (
+                  <>
+                    <span className="now-playing-subtitle absolute inset-0 truncate md:hidden">
+                      Winson Dong
+                    </span>
+                    <span
+                      className="now-playing-subtitle now-playing-subtitle-credit absolute inset-0 whitespace-nowrap md:hidden"
+                      style={{ color: SPOTIFY_GREEN }}
+                    >
+                      ♪ {track.title} · {track.artist}
+                    </span>
+                  </>
+                ) : (
+                  <span className="absolute inset-0 truncate md:hidden">
+                    Winson Dong
+                  </span>
+                )}
               </p>
             </div>
           </div>
