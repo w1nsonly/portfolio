@@ -17,7 +17,7 @@ export const experiences: Experience[] = [
     date: "Sep 2025 - Dec 2025",
   },
   {
-    company: "Hidden Laier",
+    company: "Human Laier",
     position: "Software Engineer Intern",
     date: "Sep 2025 - Dec 2025",
   },
