@@ -119,7 +119,7 @@ export default function ExperiencePlaylist() {
                   >
                     {e.company}
                   </span>
-                  <span className="block truncate text-xs md:text-sm text-zinc-400">
+                  <span className="block text-xs md:text-sm text-zinc-400">
                     {e.position}
                   </span>
                 </span>

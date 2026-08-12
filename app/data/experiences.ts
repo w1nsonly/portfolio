@@ -55,7 +55,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "Buds Gun Shop",
-    position: "Inventory Data Management Intern",
+    position: "Data Analyst Intern",
     date: "Mar 2022 - May 2022",
     dateShort: "Mar '22 – May '22",
     bullets: [
