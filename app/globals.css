@@ -62,3 +62,48 @@ html, body {
     display: none;
   }
 }
+
+/* Animated equalizer bars for the current experience "track" */
+.eq-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.eq-bars span {
+  width: 3px;
+  background-color: #1db954;
+  border-radius: 1px;
+  animation: eq-bounce 1s ease-in-out infinite;
+}
+
+.eq-bars span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.eq-bars span:nth-child(2) {
+  animation-delay: -0.35s;
+}
+
+.eq-bars span:nth-child(3) {
+  animation-delay: -0.7s;
+}
+
+@keyframes eq-bounce {
+  0%,
+  100% {
+    height: 4px;
+  }
+
+  50% {
+    height: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eq-bars span {
+    animation: none;
+    height: 10px;
+  }
+}

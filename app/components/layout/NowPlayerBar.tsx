@@ -337,12 +337,14 @@ export default function NowPlayingBar() {
               </span>
             </div>
 
-            <span
-              className="hidden lg:inline absolute left-full bottom-0 ml-4 whitespace-nowrap text-xs"
-              style={{ color: SPOTIFY_GREEN }}
-            >
-              ♪ {track.title} · {track.artist}
-            </span>
+            {hasPlayedOnce && (
+              <span
+                className="hidden lg:inline absolute left-full bottom-0 ml-4 whitespace-nowrap text-xs"
+                style={{ color: SPOTIFY_GREEN }}
+              >
+                ♪ {track.title} · {track.artist}
+              </span>
+            )}
           </div>
 
           <div className="flex items-center gap-4 flex-none md:flex-1 justify-end">

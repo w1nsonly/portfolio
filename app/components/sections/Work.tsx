@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Section from "@/app/components/layout/Section";
 import Badge from "@/app/components/ui/Badge";
+import ExperiencePlaylist from "@/app/components/sections/ExperiencePlaylist";
 import { projects } from "@/app/data/projects";
-import { experiences } from "@/app/data/experiences";
 import { TEXT_MUTED, SPOTIFY_GREEN } from "@/app/theme/constants";
 import { Github, ExternalLink } from "lucide-react";
 import { IoPlayCircle } from "react-icons/io5";
@@ -14,51 +14,7 @@ export default function WorkSection() {
   return (
     <div className="space-y-6">
       {/* Experience */}
-      <Section
-        title="Experience"
-        subtitle="Where I shipped, learned, and iterated fast."
-      >
-        <div className="space-y-3">
-          {experiences.map((e, i) => (
-            <div
-              key={`${e.company}-${e.date}-${i}`}
-              className="relative rounded-2xl border border-zinc-800/60 bg-[#101010] p-4 md:p-5 transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg"
-            >
-              {/* subtle bottom glow */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
-
-              <div className="grid grid-cols-[24px_1fr] gap-3">
-                {/* index number */}
-                <div className="flex items-start justify-center pt-1 text-zinc-500 font-semibold">
-                  {i + 1}
-                </div>
-
-                {/* content */}
-                <div>
-                  {/* position pill */}
-                  <span
-                    className="inline-block rounded-md text-xs font-semibold px-2.5 py-1"
-                    style={{
-                      backgroundColor: `${SPOTIFY_GREEN}20`,
-                      color: SPOTIFY_GREEN,
-                    }}
-                  >
-                    {e.position}
-                  </span>
-
-                  {/* company */}
-                  <h4 className="mt-2 text-white font-extrabold text-lg md:text-xl leading-tight">
-                    {e.company}
-                  </h4>
-
-                  {/* date */}
-                  <p className="mt-1 text-sm text-zinc-400">{e.date}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
+      <ExperiencePlaylist />
 
       {/* Projects */}
       <Section
