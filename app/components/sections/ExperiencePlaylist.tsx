@@ -45,7 +45,7 @@ export default function ExperiencePlaylist() {
       {/* Playlist header */}
       <div className="flex items-center gap-4 p-2 md:p-4">
         {/* Album art */}
-        <div className="relative h-20 w-20 md:h-28 md:w-28 shrink-0 overflow-hidden rounded-md shadow-lg shadow-black/50">
+        <div className="relative h-20 w-20 md:h-28 md:w-28 shrink-0 overflow-hidden rounded-md shadow-lg shadow-black/50 transition-transform duration-300 hover:scale-105">
           <Image
             src="/designs/experience_cover.jpg"
             alt="Experience playlist cover"
@@ -102,20 +102,34 @@ export default function ExperiencePlaylist() {
               <button
                 onClick={() => toggleRow(i)}
                 aria-expanded={isOpen}
-                className={`group grid w-full grid-cols-[14px_1fr_124px] md:grid-cols-[24px_1fr_160px] items-center gap-2.5 md:gap-3 overflow-hidden rounded-lg px-2 md:px-2 py-2.5 text-left transition-colors hover:bg-white/5 ${
+                className={`group grid w-full grid-cols-[14px_1fr_124px] md:grid-cols-[24px_1fr_160px] items-center gap-2.5 md:gap-3 overflow-hidden rounded-lg px-2 md:px-2 py-2.5 text-left transition-all duration-300 hover:scale-[1.02] hover:bg-white/5 ${
                   isOpen ? "bg-white/5" : ""
                 }`}
               >
                 {/* index / equalizer */}
-                <span className="flex items-center justify-center text-sm text-zinc-500 tabular-nums">
-                  {isOpen ? <Equalizer /> : i + 1}
+                <span className="relative flex items-center justify-center text-sm text-zinc-500 tabular-nums">
+                  {isOpen ? (
+                    <Equalizer />
+                  ) : (
+                    <>
+                      <span className="transition-opacity duration-200 group-hover:opacity-0">
+                        {i + 1}
+                      </span>
+                      <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                        <Equalizer />
+                      </span>
+                    </>
+                  )}
                 </span>
 
                 {/* company + title */}
                 <span className="min-w-0">
                   <span
-                    className="block truncate font-semibold"
-                    style={{ color: isOpen ? SPOTIFY_GREEN : "white" }}
+                    className={`block truncate font-semibold ${
+                      isOpen
+                        ? "text-[#1DB954]"
+                        : "text-white group-hover:text-[#1DB954]"
+                    }`}
                   >
                     {e.company}
                   </span>
