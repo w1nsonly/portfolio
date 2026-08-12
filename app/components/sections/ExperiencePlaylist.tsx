@@ -89,7 +89,7 @@ export default function ExperiencePlaylist() {
       {/* Column header */}
       <div className="-mx-2 md:mx-3 mt-2 grid grid-cols-[14px_1fr_124px] md:grid-cols-[24px_1fr_160px] items-center gap-2.5 md:gap-3 border-b border-zinc-800/70 px-2 md:px-2 pb-2 text-[11px] font-medium uppercase tracking-wider text-zinc-500">
         <span className="text-center">#</span>
-        <span>Role</span>
+        <span>Title</span>
         <span className="text-center">Dates</span>
       </div>
 
@@ -126,7 +126,8 @@ export default function ExperiencePlaylist() {
 
                 {/* dates */}
                 <span className="text-center text-xs md:text-sm text-zinc-400 whitespace-nowrap">
-                  {e.date}
+                  <span className="md:hidden">{e.dateShort}</span>
+                  <span className="hidden md:inline">{e.date}</span>
                 </span>
               </button>
 

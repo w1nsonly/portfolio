@@ -3,6 +3,7 @@ export type Experience = {
   company: string;
   position: string;
   date: string;
+  dateShort: string;
   bullets: string[];
   tech: string[];
 };
@@ -12,6 +13,7 @@ export const experiences: Experience[] = [
     company: "Biteset",
     position: "Founding Software Engineer",
     date: "Apr 2026 - Present",
+    dateShort: "Apr '26 – Present",
     bullets: [
       "Building a cross-platform fitness and nutrition app solo, from mobile UI to backend sync.",
       "Using AI to generate personalized workout and nutrition recommendations for users.",
@@ -22,6 +24,7 @@ export const experiences: Experience[] = [
     company: "BU Spark",
     position: "Full Stack Engineer",
     date: "Sep 2025 - Dec 2025",
+    dateShort: "Sep '25 – Dec '25",
     bullets: [
       "Built an artifact upload and search pipeline for a university research platform.",
       "Added admin review tooling and role-based access controls for research staff.",
@@ -32,6 +35,7 @@ export const experiences: Experience[] = [
     company: "Human Laier",
     position: "Software Engineer Intern",
     date: "Sep 2025 - Dec 2025",
+    dateShort: "Sep '25 – Dec '25",
     bullets: [
       "Built an AI-powered employee engagement platform with interactive network visualizations.",
       "Shipped chat and analytics features for a full-stack SaaS product.",
@@ -42,6 +46,7 @@ export const experiences: Experience[] = [
     company: "City King Buffet",
     position: "Software Engineer (Contract)",
     date: "Jul 2025 - Aug 2025",
+    dateShort: "Jul '25 – Aug '25",
     bullets: [
       "Built a full-stack restaurant website with a dynamically managed menu.",
       "Deployed an AI support chatbot to answer common customer questions.",
@@ -52,6 +57,7 @@ export const experiences: Experience[] = [
     company: "Buds Gun Shop",
     position: "Inventory Data Management Intern",
     date: "Mar 2022 - May 2022",
+    dateShort: "Mar '22 – May '22",
     bullets: [
       "Cleaned and reconciled inventory data across catalog listings to improve accuracy for online and in-store systems.",
       "Automated repetitive data-entry and reporting workflows in Excel, reducing manual processing time for the team.",
