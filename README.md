@@ -2,8 +2,8 @@
 
 A personal portfolio site inspired by Spotify’s design language — showcases projects, experience, and contact info.  
 
-**Live Demo:** [https://w1nsonly.me](https://w1nsonly.me)  
-**Preview:** ![Portfolio Screenshot](./w1nsonly.me_homepage.png)
+**Live Demo:** [https://w1nsonly.com](https://w1nsonly.com)  
+**Preview:** ![Portfolio Screenshot](./w1nsonly.com.png)
 
 
 ---
