@@ -87,14 +87,14 @@ export default function ExperiencePlaylist() {
       </div>
 
       {/* Column header */}
-      <div className="mx-2 md:mx-4 mt-2 grid grid-cols-[24px_1fr_100px] md:grid-cols-[24px_1fr_170px] items-center gap-3 border-b border-zinc-800/70 px-3 pb-2 text-[11px] font-medium uppercase tracking-wider text-zinc-500">
+      <div className="-mx-2 md:mx-3 mt-2 grid grid-cols-[14px_1fr_124px] md:grid-cols-[24px_1fr_160px] items-center gap-2.5 md:gap-3 border-b border-zinc-800/70 px-2 md:px-2 pb-2 text-[11px] font-medium uppercase tracking-wider text-zinc-500">
         <span className="text-center">#</span>
         <span>Role</span>
         <span className="text-center">Dates</span>
       </div>
 
       {/* Track list */}
-      <ul className="px-2 md:px-4 pt-1 pb-2">
+      <ul className="-mx-2 px-0 md:mx-0 md:px-4 pt-1 pb-2">
         {experiences.map((e, i) => {
           const isOpen = expanded.has(i);
           return (
@@ -102,7 +102,7 @@ export default function ExperiencePlaylist() {
               <button
                 onClick={() => toggleRow(i)}
                 aria-expanded={isOpen}
-                className={`group grid w-full grid-cols-[24px_1fr_100px] md:grid-cols-[24px_1fr_170px] items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors hover:bg-white/5 ${
+                className={`group grid w-full grid-cols-[14px_1fr_124px] md:grid-cols-[24px_1fr_160px] items-center gap-2.5 md:gap-3 overflow-hidden rounded-lg px-2 md:px-2 py-2.5 text-left transition-colors hover:bg-white/5 ${
                   isOpen ? "bg-white/5" : ""
                 }`}
               >
@@ -119,7 +119,7 @@ export default function ExperiencePlaylist() {
                   >
                     {e.company}
                   </span>
-                  <span className="block truncate text-sm text-zinc-400">
+                  <span className="block truncate text-xs md:text-sm text-zinc-400">
                     {e.position}
                   </span>
                 </span>
@@ -139,8 +139,8 @@ export default function ExperiencePlaylist() {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <div className="ml-[36px] mr-3 border-l border-zinc-800 pl-4 pb-3 pt-3 md:mr-6">
-                    <ul className="list-disc space-y-1.5 pl-4 text-sm text-zinc-300 marker:text-zinc-600">
+                  <div className="ml-[32px] mr-3 border-l border-zinc-800 pl-4 pb-3 pt-3 md:ml-[36px] md:mr-6">
+                    <ul className="list-disc space-y-1.5 pl-4 text-xs md:text-sm text-zinc-300 marker:text-zinc-600">
                       {e.bullets.map((b) => (
                         <li key={b}>{b}</li>
                       ))}
