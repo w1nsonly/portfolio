@@ -64,7 +64,7 @@ export default function ExperiencePlaylist() {
             Experience
           </h2>
           <p className={`${TEXT_MUTED} mt-1 text-xs md:text-sm truncate`}>
-            Winson Dong · {experiences.length} roles · 2022 – Present
+            Winson Dong · Software Engineer
           </p>
 
           {/* Play all / Collapse all */}
