@@ -9,7 +9,7 @@ export default function HomeSection() {
   
   return (
     <div className="space-y-6">
-      <div className="relative rounded-2xl overflow-hidden border border-zinc-800/60 transition-transform duration-300 hover:scale-[1.02]">
+      <div className="relative rounded-2xl overflow-hidden border border-zinc-800/60">
         {/* Aspect-ratio wrapper keeps the banner contained on all screens */}
         <div className="relative w-full h-[260px] sm:h-[400px]">
           <Image
