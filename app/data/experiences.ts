@@ -4,19 +4,20 @@ export type Experience = {
   position: string;
   date: string;
   dateShort: string;
+  /** Supports inline markdown-style links: [label](https://url) */
   bullets: string[];
   tech: string[];
 };
 
 export const experiences: Experience[] = [
   {
-    company: "Biteset",
+    company: "Bufound",
     position: "Founding Software Engineer",
     date: "Apr 2026 - Present",
     dateShort: "Apr '26 – Present",
     bullets: [
-      "Building a cross-platform fitness and nutrition app solo, from mobile UI to backend sync.",
-      "Using AI to generate personalized workout and nutrition recommendations for users.",
+      "Built [Biteset](https://biteset.app), a cross-platform workout and nutrition tracking app, as the sole engineer.",
+      "Designed the sync layer and adaptive calorie targets, with AI-personalized guidance.",
     ],
     tech: ["React Native", "Expo Router", "TypeScript", "Supabase", "Claude API", "Sentry"],
   },

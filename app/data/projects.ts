@@ -4,13 +4,22 @@ export type projectType = {
   title: string;
   description: string;
   tech: string[];
-  github: string; // view code
+  github?: string; // view code (optional for closed-source work)
   href?: string; // live site (optional)
   imageSrc: string;
   imageAlt: string;
 };
 
 export const projects: projectType[] = [
+  {
+    title: "Biteset",
+    description:
+      "Biteset is a cross-platform workout and nutrition tracking app for iOS, Android, and web. It keeps training, meals, and bodyweight in sync across devices, and turns that history into adaptive daily targets with AI-personalized guidance.",
+    tech: ["React Native", "Expo Router", "TypeScript", "Supabase", "Claude API", "Sentry"],
+    href: "https://biteset.app",
+    imageSrc: "/project_covers/biteset.png",
+    imageAlt: "Biteset workout and nutrition tracking app",
+  },
   {
     title: "Machine Learning for Stolen Artifacts",
     description:

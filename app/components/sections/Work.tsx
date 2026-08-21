@@ -69,14 +69,16 @@ export default function WorkSection() {
 
                 {/* Actions */}
                 <div className="flex items-center gap-4 mt-auto pt-4">
-                  <a
-                    href={p.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-white/90 hover:text-white inline-flex items-center gap-2 text-sm"
-                  >
-                    <Github size={16} /> View code
-                  </a>
+                  {p.github && (
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-white/90 hover:text-white inline-flex items-center gap-2 text-sm"
+                    >
+                      <Github size={16} /> View code
+                    </a>
+                  )}
 
                   {p.href && (
                     <a
