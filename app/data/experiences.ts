@@ -1,6 +1,8 @@
 // File: data/experiences.ts
 export type Experience = {
   company: string;
+  /** Company site — renders the company name as a link in the row */
+  href?: string;
   position: string;
   date: string;
   dateShort: string;
@@ -12,6 +14,7 @@ export type Experience = {
 export const experiences: Experience[] = [
   {
     company: "Bufound",
+    href: "https://bufound.com",
     position: "Founding Software Engineer",
     date: "Apr 2026 - Present",
     dateShort: "Apr '26 – Present",
@@ -45,6 +48,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "City King Buffet",
+    href: "https://citykingbuffetky.com/",
     position: "Software Engineer (Contract)",
     date: "Jul 2025 - Aug 2025",
     dateShort: "Jul '25 – Aug '25",
@@ -56,6 +60,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "Buds Gun Shop",
+    href: "https://www.budsgunshop.com/",
     position: "Data Analyst Intern",
     date: "Mar 2022 - May 2022",
     dateShort: "Mar '22 – May '22",

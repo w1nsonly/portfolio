@@ -55,7 +55,7 @@ export const projects: projectType[] = [
       "City King Buffet is a modern website for a family-owned restaurant, featuring real-time menu updates and an AI-powered chatbot for customer support. The site creates a smooth and engaging online dining experience.",
     tech: ["Next.js", "Django REST", "LangChain", "OpenAI", "Chroma"],
     github: "https://github.com/w1nsonly/city-king-buffet",
-    href: "http://citykingbuffetky.com/",
+    href: "https://citykingbuffetky.com/",
     imageSrc: "/project_covers/city_king_buffet.png",
     imageAlt: "City King Buffet Image",
   },

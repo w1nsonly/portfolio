@@ -9,6 +9,7 @@ import Badge from "@/app/components/ui/Badge";
 import { experiences } from "@/app/data/experiences";
 import { TEXT_MUTED, SPOTIFY_GREEN } from "@/app/theme/constants";
 import { IoPlay, IoPause } from "react-icons/io5";
+import { ExternalLink } from "lucide-react";
 
 const LINK_RE = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g;
 
@@ -128,15 +129,20 @@ export default function ExperiencePlaylist() {
           const isOpen = expanded.has(i);
           return (
             <li key={`${e.company}-${e.date}`}>
-              <button
-                onClick={() => toggleRow(i)}
-                aria-expanded={isOpen}
-                className={`group grid w-full grid-cols-[14px_1fr_124px] md:grid-cols-[24px_1fr_160px] items-center gap-2.5 md:gap-3 overflow-hidden rounded-lg px-2 md:px-2 py-2.5 text-left transition-all duration-300 hover:scale-[1.02] hover:bg-white/5 ${
+              <div
+                className={`group relative grid w-full grid-cols-[14px_1fr_124px] md:grid-cols-[24px_1fr_160px] items-center gap-2.5 md:gap-3 overflow-hidden rounded-lg px-2 md:px-2 py-2.5 text-left transition-all duration-300 hover:scale-[1.02] hover:bg-white/5 ${
                   isOpen ? "bg-white/5" : ""
                 }`}
               >
+                {/* Full-row toggle, layered beneath the company link */}
+                <button
+                  onClick={() => toggleRow(i)}
+                  aria-expanded={isOpen}
+                  aria-label={`${e.company} — ${e.position}`}
+                  className="absolute inset-0 cursor-pointer"
+                />
                 {/* index / equalizer */}
-                <span className="relative flex items-center justify-center text-sm text-zinc-500 tabular-nums">
+                <span className="pointer-events-none relative flex items-center justify-center text-sm text-zinc-500 tabular-nums">
                   {isOpen ? (
                     <Equalizer />
                   ) : (
@@ -154,13 +160,25 @@ export default function ExperiencePlaylist() {
                 {/* company + title */}
                 <span className="min-w-0">
                   <span
-                    className={`block truncate font-semibold ${
+                    className={`flex min-w-0 items-center font-semibold ${
                       isOpen
                         ? "text-[#1DB954]"
                         : "text-white group-hover:text-[#1DB954]"
                     }`}
                   >
-                    {e.company}
+                    {e.href ? (
+                      <a
+                        href={e.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="relative z-10 inline-flex min-w-0 items-center gap-1 underline-offset-2 hover:underline"
+                      >
+                        <span className="truncate">{e.company}</span>
+                        <ExternalLink className="h-3 w-3 shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+                      </a>
+                    ) : (
+                      <span className="truncate">{e.company}</span>
+                    )}
                   </span>
                   <span className="block text-xs md:text-sm text-zinc-400">
                     {e.position}
@@ -172,7 +190,7 @@ export default function ExperiencePlaylist() {
                   <span className="md:hidden">{e.dateShort}</span>
                   <span className="hidden md:inline">{e.date}</span>
                 </span>
-              </button>
+              </div>
 
               {/* Expanded detail */}
               <div
