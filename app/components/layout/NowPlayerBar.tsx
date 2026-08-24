@@ -12,42 +12,7 @@ import {
 } from "lucide-react";
 import { SPOTIFY_GREEN, TEXT_MUTED } from "@/app/theme/constants";
 import Image from "next/image";
-
-// Playlist — drop mp3s in public/audio/ and add an entry for each one.
-// `anime` is kept for reference (where each track is from) even though only
-// the title and artist are rendered today.
-const TRACKS = [
-  {
-    src: "/audio/departure.mp3",
-    title: "departure!",
-    artist: "Masatoshi Ono",
-    anime: "Hunter x Hunter (2011) — Opening 1",
-  },
-  {
-    src: "/audio/shinzou-wo-sasageyo.mp3",
-    title: "Shinzou wo Sasageyo!",
-    artist: "Linked Horizon",
-    anime: "Attack on Titan Season 2 — Opening",
-  },
-  {
-    src: "/audio/lost-in-paradise.mp3",
-    title: "Lost in Paradise",
-    artist: "ALI feat. AKLO",
-    anime: "Jujutsu Kaisen — Ending 1",
-  },
-  {
-    src: "/audio/grandeur.mp3",
-    title: "Grandeur",
-    artist: "Snow Man",
-    anime: "Black Clover — Opening 13",
-  },
-  {
-    src: "/audio/akuma-no-ko.mp3",
-    title: "Akuma no Ko",
-    artist: "Ai Higuchi",
-    anime: "Attack on Titan Final Season — Ending 2",
-  },
-];
+import { tracks } from "@/app/data/tracks";
 
 function formatTime(seconds: number) {
   if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
@@ -68,15 +33,15 @@ export default function NowPlayingBar() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [trackIndex, setTrackIndex] = useState(0);
-  // Play order into TRACKS. Starts unshuffled so the server and client render
+  // Play order into tracks. Starts unshuffled so the server and client render
   // the same markup, then gets shuffled on mount (see below).
-  const [order, setOrder] = useState(() => TRACKS.map((_, i) => i));
+  const [order, setOrder] = useState(() => tracks.map((_, i) => i));
   const draggingRef = useRef<null | "volume" | "seek">(null);
   const fixingDurationRef = useRef(false);
   // Whether the next loaded track should start playing on its own.
   const autoPlayNextRef = useRef(false);
 
-  const track = TRACKS[order[trackIndex]];
+  const track = tracks[order[trackIndex]];
 
   // Shuffle once per page load. Doing this after mount (rather than during
   // render) keeps hydration deterministic.
@@ -112,7 +77,7 @@ export default function NowPlayingBar() {
 
   const goToTrack = useCallback((next: number) => {
     autoPlayNextRef.current = true;
-    setTrackIndex((next + TRACKS.length) % TRACKS.length);
+    setTrackIndex((next + tracks.length) % tracks.length);
   }, []);
 
   const nextTrack = useCallback(() => {
@@ -182,7 +147,7 @@ export default function NowPlayingBar() {
 
   const muted = volume === 0;
   const progress = duration ? (currentTime / duration) * 100 : 0;
-  const multiTrack = TRACKS.length > 1;
+  const multiTrack = tracks.length > 1;
 
   const skipButtonClass =
     "text-zinc-400 hover:text-white transition disabled:opacity-30 disabled:hover:text-zinc-400";
