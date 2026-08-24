@@ -13,7 +13,12 @@ import InlineLinkText from "@/app/components/ui/InlineLinkText";
 const GREETINGS = ["Hello, World.", "Hey there.", "<Hello />", "Greetings!"];
 
 /* Rotating titles with typing effect */
-const TITLES = ["Software Engineer", "Full Stack Developer", "Systems Engineer"];
+const TITLES = [
+  "Software Engineer",
+  "Full Stack Developer",
+  "Mobile Developer",
+  "Entrepreneur"
+];
 const LONGEST_TITLE = "Full Stack Developer"; // ghost text to reserve width
 
 /* --- Typewriter hook for TITLES only --- */
