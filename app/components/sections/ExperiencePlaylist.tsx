@@ -10,35 +10,7 @@ import { experiences } from "@/app/data/experiences";
 import { TEXT_MUTED, SPOTIFY_GREEN } from "@/app/theme/constants";
 import { IoPlay, IoPause } from "react-icons/io5";
 import { ExternalLink } from "lucide-react";
-
-const LINK_RE = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g;
-
-/** Renders bullet text, turning [label](url) into an inline green link. */
-function BulletText({ text }: { text: string }) {
-  const parts: React.ReactNode[] = [];
-  let last = 0;
-
-  for (const m of text.matchAll(LINK_RE)) {
-    const start = m.index ?? 0;
-    if (start > last) parts.push(text.slice(last, start));
-    parts.push(
-      <a
-        key={`${m[2]}-${start}`}
-        href={m[2]}
-        target="_blank"
-        rel="noreferrer"
-        className="font-medium underline underline-offset-2 transition-opacity hover:opacity-80"
-        style={{ color: SPOTIFY_GREEN }}
-      >
-        {m[1]}
-      </a>
-    );
-    last = start + m[0].length;
-  }
-  if (last < text.length) parts.push(text.slice(last));
-
-  return <>{parts}</>;
-}
+import InlineLinkText from "@/app/components/ui/InlineLinkText";
 
 function Equalizer() {
   return (
@@ -205,7 +177,7 @@ export default function ExperiencePlaylist() {
                     <ul className="list-disc space-y-1.5 pl-4 text-xs md:text-sm text-zinc-300 marker:text-zinc-600">
                       {e.bullets.map((b) => (
                         <li key={b}>
-                          <BulletText text={b} />
+                          <InlineLinkText text={b} />
                         </li>
                       ))}
                     </ul>
