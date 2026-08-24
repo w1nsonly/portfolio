@@ -6,6 +6,8 @@ import Section from "@/app/components/layout/Section";
 import { motion } from "framer-motion";
 import { SPOTIFY_GREEN } from "@/app/theme/constants";
 import Image from "next/image";
+import { bio } from "@/app/data/about";
+import InlineLinkText from "@/app/components/ui/InlineLinkText";
 
 /* Greeting options (one is chosen per refresh) */
 const GREETINGS = ["Hello, World.", "Hey there.", "<Hello />", "Greetings!"];
@@ -161,11 +163,16 @@ export default function AboutSection() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="mx-auto max-w-5xl"
+        className="mx-auto max-w-5xl space-y-4"
       >
-        <p className="text-zinc-100/95 text-lg md:text-md leading-relaxed md:leading-8">
-          Hello! {"I'm"} from Mount Sterling, Kentucky, and {"I've"} always been passionate about basketball, family, and continuous growth. I graduated from Boston University with a Computer Science degree, and now {"I'm"} working as a Software Engineer. My interests lie in full-stack development, distributed systems, and creating human-centered software solutions. When {"I'm"} not coding, {"you'll"} find me learning new tools, experimenting with side projects, or pushing myself in the gym. I also keep up with basketball—both keep me grounded and motivated. With small-town roots and a drive for innovation, {"I'm"} all about building software {"that's"} reliable, intuitive, and meaningful.
-        </p>
+        {bio.map((paragraph) => (
+          <p
+            key={paragraph}
+            className="text-zinc-100/95 text-lg md:text-md leading-relaxed md:leading-8"
+          >
+            <InlineLinkText text={paragraph} />
+          </p>
+        ))}
       </motion.div>
 
       {/* caret blink animation */}
