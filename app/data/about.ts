@@ -16,7 +16,7 @@ export const bio: string[] = [
    engineering, and business strategy. I love learning new technologies,
    picking up new skills, and building things that I find interesting. I'm
    currently looking for 2026/2027 software engineering opportunities, so
-   feel free to [here](mailto:mrwinsondong@gmail.com)!`,
+   feel free to reach out!`,
 
   `Outside of coding, I enjoy going to the gym, playing/watching basketball,
    anything FOOD pls, listening to music, watching anime (currently watching Hajime no
