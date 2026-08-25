@@ -148,7 +148,11 @@ export default function ExperiencePlaylist() {
                         }`}
                       >
                         <span className="truncate">{e.company}</span>
-                        <ExternalLink className="h-3 w-3 shrink-0 opacity-100 transition-opacity duration-200 md:opacity-0 md:group-hover:opacity-100" />
+                        <ExternalLink
+                          className={`h-3 w-3 shrink-0 opacity-100 transition-opacity duration-200 ${
+                            isOpen ? "" : "md:opacity-0 md:group-hover:opacity-100"
+                          }`}
+                        />
                       </a>
                     ) : (
                       <span className="truncate">{e.company}</span>
