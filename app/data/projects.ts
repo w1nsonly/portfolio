@@ -81,7 +81,7 @@ export const projects: projectType[] = [
     description:
       "Airbnb Price Prediction is a machine learning app that estimates rental prices in New York City. It highlights how factors like location, amenities, and host details influence pricing through data-driven insights and feature analysis.",
     tech: ["Python", "pandas", "Scikit-Learn"],
-    github: "https://github.com/w1nsonly",
+    github: "https://github.com/w1nsonly/AirbnbPricePredictor",
     imageSrc: "/project_covers/airbnb_price_prediction.png",
     imageAlt: "Machine learning predictions for Airbnb pricing",
   },
