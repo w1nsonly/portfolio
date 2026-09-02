@@ -15,11 +15,11 @@ export const experiences: Experience[] = [
   {
     company: "Bufound",
     href: "https://bufound.com",
-    position: "Founding Software Engineer",
+    position: "Founder & Software Engineer",
     date: "Apr 2026 - Present",
     dateShort: "Apr '26 – Present",
     bullets: [
-      "Built [Biteset](https://biteset.app), a cross-platform workout and nutrition tracking app, as the sole engineer.",
+      "Founded Bufound, an independent software studio, and built [Biteset](https://biteset.app), a cross-platform workout and nutrition tracking app, as the sole engineer.",
       "Designed the sync layer and adaptive calorie targets, with AI-personalized guidance.",
     ],
     tech: ["React Native", "Expo Router", "TypeScript", "Supabase", "Claude API", "Sentry"],
