@@ -163,7 +163,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center w-full rounded-full px-5 py-3 text-base font-semibold text-black"
+              className="inline-flex items-center justify-center w-full rounded-full px-5 py-3 text-sm font-bold text-black transition-transform duration-200 hover:scale-105 cursor-pointer"
               style={{ backgroundColor: SPOTIFY_GREEN }}
             >
               Resume
@@ -243,7 +243,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
             href="/resume/winson_dong_resume.pdf"
             target="_blank"
             rel="noreferrer"
-            className="mt-4 inline-flex items-center justify-center w-full rounded-full px-5 py-2 font-medium text-black transition"
+            className="mt-4 inline-flex items-center justify-center w-full rounded-full px-5 py-2 text-sm font-bold text-black transition-transform duration-200 hover:scale-105 cursor-pointer"
             style={{ backgroundColor: SPOTIFY_GREEN }}
           >
             Resume
