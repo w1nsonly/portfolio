@@ -74,7 +74,7 @@ export default function WorkSection() {
                       href={p.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-white/90 hover:text-white inline-flex items-center gap-2 text-sm"
+                      className="text-white/90 hover:text-[#1DB954] inline-flex items-center gap-2 text-sm transition-colors"
                     >
                       <Github size={16} /> View code
                     </a>
@@ -85,7 +85,7 @@ export default function WorkSection() {
                       href={p.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-white/90 hover:text-white inline-flex items-center gap-2 text-sm"
+                      className="text-white/90 hover:text-[#1DB954] inline-flex items-center gap-2 text-sm transition-colors"
                     >
                       <ExternalLink size={16} /> Live
                     </a>
