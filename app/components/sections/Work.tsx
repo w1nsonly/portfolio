@@ -44,7 +44,7 @@ export default function WorkSection() {
                   href={p.href ?? p.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 flex cursor-pointer items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 >
                   <IoPlayCircle
                     className="w-16 h-16 drop-shadow-lg hover:scale-110 transition-transform duration-300"

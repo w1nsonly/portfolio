@@ -72,7 +72,7 @@ export default function ExperiencePlaylist() {
           {/* Play all / Collapse all */}
           <button
             onClick={toggleAll}
-            className="mt-3 inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold text-black transition-transform duration-200 hover:scale-105"
+            className="mt-3 inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold text-black transition-transform duration-200 hover:scale-105 cursor-pointer"
             style={{ backgroundColor: SPOTIFY_GREEN }}
           >
             {allExpanded ? (

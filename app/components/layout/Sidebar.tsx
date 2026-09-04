@@ -109,7 +109,7 @@ export default function Sidebar({ tabs, active, onChange }: SidebarProps) {
                   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                 }}
                 className={`w-full text-left flex items-center gap-3 rounded-lg px-4 py-4 text-lg
-                  hover:bg-white/5 active:bg-white/10 transition
+                  cursor-pointer transition-colors hover:bg-white/5 active:bg-white/10
                   ${active === t.key ? "bg-white/5" : ""}`}
               >
                 <t.icon size={20} className="shrink-0" />
