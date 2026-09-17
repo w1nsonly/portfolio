@@ -9,7 +9,7 @@
  * real new paragraph, add another string to the array.
  */
 export const bio: string[] = [
-  `Hello everyone 😛! I'm from Mount Sterling, Kentucky, and somehow ended up graduating 
+  `Hello everyone! I'm from Mount Sterling, Kentucky, and somehow ended up graduating 
    from Boston University with a degree in Computer Science.`,
 
   `My interests primarily lie in full-stack development, software
@@ -19,6 +19,5 @@ export const bio: string[] = [
    feel free to reach out!`,
 
   `Outside of coding, I enjoy going to the gym, playing/watching basketball,
-   anything FOOD pls, listening to music, watching anime (currently watching Hajime no
-   Ippo 🤫), and recently Muay Thai!.`,
+   anything FOOD, listening to music, watching anime, and recently Muay Thai!.`,
 ];
