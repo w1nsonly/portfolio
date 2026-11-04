@@ -14,8 +14,8 @@ export const projects: projectType[] = [
   {
     title: "Biteset",
     description:
-      "Biteset is a cross-platform workout and nutrition tracking app for iOS, Android, and web. It keeps training, meals, and bodyweight in sync across devices, and turns that history into adaptive daily targets with AI-personalized guidance.",
-    tech: ["React Native", "Expo Router", "TypeScript", "Supabase", "Claude API", "Sentry"],
+      "Biteset is a cross-platform workout and nutrition tracking app for iOS, Android, and web. It keeps training, meals, and bodyweight in sync across devices, and sets personalized calorie and macro targets, with AI-powered meal photo and nutrition label scanning.",
+    tech: ["React Native", "Expo Router", "TypeScript", "Supabase", "OpenAI API", "Sentry"],
     href: "https://biteset.app",
     imageSrc: "/project_covers/biteset.png",
     imageAlt: "Biteset workout and nutrition tracking app",
@@ -24,7 +24,7 @@ export const projects: projectType[] = [
     title: "Machine Learning for Stolen Artifacts",
     description:
      "Machine Learning for Stolen Artifacts is a full-stack web portal for the Khmer Statuary Project that enables researchers to upload, search, and moderate Cambodian artifact images for provenance research. The platform features secure submissions, standardized metadata, and admin moderation tools to aid artifact identification and repatriation efforts.",
-    tech: ["Next.js", "Tailwind CSS", "FastAPI", "PostgreSQL", "SQLAlchemy", "Cloud Storage", "Clerk"],
+    tech: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Material UI", "Clerk"],
     github: "https://github.com/w1nsonly/se-stolen-artifacts",
     imageSrc: "/project_covers/KSP_logo.png",
     imageAlt: "KSP Logo",

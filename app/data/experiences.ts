@@ -20,9 +20,9 @@ export const experiences: Experience[] = [
     dateShort: "Apr '26 – Present",
     bullets: [
       "Founded Bufound, an independent software studio, and built [Biteset](https://biteset.app), a cross-platform workout and nutrition tracking app, as the sole engineer.",
-      "Designed the sync layer and adaptive calorie targets, with AI-personalized guidance.",
+      "Designed an offline-first sync layer and personalized calorie targets, with AI-powered meal and nutrition label scanning.",
     ],
-    tech: ["React Native", "Expo Router", "TypeScript", "Supabase", "Claude API", "Sentry"],
+    tech: ["React Native", "Expo Router", "TypeScript", "Supabase", "OpenAI API", "Sentry"],
   },
   {
     company: "BU Spark",
